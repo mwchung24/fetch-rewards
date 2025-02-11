@@ -23,7 +23,6 @@ const Search = ({setSearch, breeds}: {setSearch: (args: TSearch) => void; breeds
   const {register, handleSubmit} = useForm<TSearchFormInput>(defaultValues);
 
   const onSubmit = (data: TSearchFormInput) => {
-    console.log('data', data);
     setSearch({
       breeds: selectedBreeds,
       zipCodes: data.zipCodes ? data.zipCodes?.split(', ') : null,

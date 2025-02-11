@@ -28,12 +28,10 @@ const SearchPage = () => {
   });
 
   useEffect(() => {
-    console.log(fetchAllDogIds.data);
     setDogIds(fetchAllDogIds.data?.resultIds);
   }, [fetchAllDogIds.data, search]);
 
   useEffect(() => {
-    console.log('dogIds', dogIds);
     if (dogIds?.length) {
       fetchDogs.mutate(dogIds, {
         onSuccess: (res) => {
@@ -44,12 +42,9 @@ const SearchPage = () => {
   }, [dogIds]);
 
   const handleSearch = (searchCriteria: TSearch) => {
-    console.log('searchCriteria', searchCriteria);
     setSearch(searchCriteria);
     queryClient.invalidateQueries({queryKey: ['dogIds']});
   };
-
-  console.log('dogs', dogs);
 
   return (
     <div className={styles.searchPage}>

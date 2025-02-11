@@ -1,5 +1,5 @@
 .dataTableWrapper {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .dogImage {
@@ -7,7 +7,7 @@
   width: 100px;
 }
 
-.imageColumn {
-  display: flex;
-  justify-content: center;
+.matchButton {
+  margin-bottom: 20px;
+  width: 100%;
 }

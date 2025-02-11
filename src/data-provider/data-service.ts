@@ -20,7 +20,6 @@ export const getBreeds = async () => {
 };
 
 export const getAllDogIds = async (from: number, size: number, search: TSearch | null) => {
-  console.log('search', search);
   let url = `${baseUrl}/dogs/search?from=${from}&size=${size}`;
   if (search?.breeds?.length) {
     search?.breeds?.forEach((breed) => {
