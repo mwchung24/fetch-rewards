@@ -1,8 +1,8 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
-import LoginPage from './containers/LoginPage';
+import LoginPage from './containers/LoginPage/LoginPage';
 import './App.css';
-import SearchPage from './containers/SearchPage';
+import SearchPage from './containers/SearchPage/SearchPage';
 
 const queryClient = new QueryClient();
 
