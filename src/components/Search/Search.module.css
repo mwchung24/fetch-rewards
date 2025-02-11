@@ -1,0 +1,25 @@
+.searchWrapper {
+  text-align: center;
+}
+
+.searchForm {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (width <= 600px) {
+    flex-direction: column;
+  }
+}
+
+.breedsInput,
+.zipcodesInput,
+.ageMinInput,
+.ageMaxInput,
+.searchSubmit {
+  width: 18%;
+  @media (width <= 600px) {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
