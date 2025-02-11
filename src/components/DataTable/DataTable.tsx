@@ -3,6 +3,7 @@ import {DataTable, DataTableSelectionMultipleChangeEvent} from 'primereact/datat
 import {Button} from 'primereact/button';
 import {Column} from 'primereact/column';
 import {TDog} from '../../types';
+import FavoriteDogs from '../FavoriteDogs/FavoriteDogs';
 import styles from './DataTable.module.css';
 
 const DogDataTable = ({dogs}: {dogs: TDog[]}) => {
@@ -18,6 +19,7 @@ const DogDataTable = ({dogs}: {dogs: TDog[]}) => {
 
   return (
     <div className={styles.dataTableWrapper}>
+      {selectedDogs && !!selectedDogs.length && <FavoriteDogs dogs={selectedDogs} />}
       <Button
         disabled={!selectedDogs || selectedDogs.length === 0}
         label="Find a match!"
