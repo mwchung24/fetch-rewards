@@ -1,0 +1,13 @@
+.dataTableWrapper {
+  margin-top: 40px;
+}
+
+.dogImage {
+  height: auto;
+  width: 100px;
+}
+
+.imageColumn {
+  display: flex;
+  justify-content: center;
+}
