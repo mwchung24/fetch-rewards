@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {TLoginFormInput, TSearch} from '../types';
+import {TLoginFormInput, TSearch, TDog} from '../types';
 
 const baseUrl = 'https://frontend-take-home-service.fetch.com';
 
@@ -54,6 +54,14 @@ export const getDogs = async (dogIds: string[]) => {
 
 export const getAllZipcodes = async (size: {size: string}) => {
   const response = await axios.post(`${baseUrl}/locations/search`, size, {
+    withCredentials: true,
+    headers: {'Content-Type': 'application/json'},
+  });
+  return response.data;
+};
+
+export const findMatch = async (dogs: {dogs: TDog[]}) => {
+  const response = await axios.post(`${baseUrl}/dogs/match`, dogs, {
     withCredentials: true,
     headers: {'Content-Type': 'application/json'},
   });
