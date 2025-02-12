@@ -25,5 +25,23 @@
 }
 
 .headerText {
-  font-family: 'Lato';
+  font-family: 'Dosis', serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+}
+
+.searchHeader {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../images/doglaying.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
+  @media (width <= 600px) {
+    background-size: cover;
+  }
 }

@@ -5,6 +5,7 @@ import {Button} from 'primereact/button';
 import {MultiSelect} from 'primereact/multiselect';
 import {TSearchFormInput, TSearch} from '../../types';
 import styles from './Search.module.css';
+import pawprints from '../../images/pawprints.png';
 
 const Search = ({setSearch, breeds}: {setSearch: (args: TSearch) => void; breeds: string[]}) => {
   const [selectedBreeds, setSelectedBreeds] = useState<string[] | null>(null);
@@ -32,7 +33,9 @@ const Search = ({setSearch, breeds}: {setSearch: (args: TSearch) => void; breeds
   };
   return (
     <div className={styles.searchWrapper}>
-      <h1 className={styles.headerText}>Find your pawfect friend!</h1>
+      <div className={styles.searchHeader}>
+        <h1 className={styles.headerText}>FIND YOUR PAWFECT FRIEND!</h1>
+      </div>
       <form className={styles.searchForm} onSubmit={handleSubmit(onSubmit)}>
         <MultiSelect
           className={styles.breedsInput}
