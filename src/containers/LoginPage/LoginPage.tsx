@@ -34,7 +34,7 @@ const LoginPage = () => {
   return (
     <div className={styles.loginCardWrapper}>
       <Card className={styles.loginCard}>
-        <h1>Login</h1>
+        <h1 className={styles.loginText}>Login</h1>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <InputText
             className={styles.nameInput}

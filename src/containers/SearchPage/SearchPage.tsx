@@ -11,6 +11,7 @@ import MatchDialog from '../../components/MatchDialog/MatchDialog';
 const SearchPage = () => {
   const [dogIds, setDogIds] = useState<string[]>([]);
   const [dogs, setDogs] = useState<TDog[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [matchedDog, setMatchedDog] = useState<TDog | null>(null);
   const [search, setSearch] = useState<TSearch | null>(null);
   const [showMatchDialog, setShowMatchDialog] = useState<boolean>(false);
@@ -44,6 +45,7 @@ const SearchPage = () => {
       fetchDogs.mutate(dogIds, {
         onSuccess: (res) => {
           setDogs(res);
+          setIsLoading(false);
         },
       });
     }
@@ -52,6 +54,7 @@ const SearchPage = () => {
   const handleSearch = (searchCriteria: TSearch) => {
     setSearch(searchCriteria);
     queryClient.invalidateQueries({queryKey: ['dogIds']});
+    setIsLoading(false);
   };
 
   const handleMatch = (selectedDogs: TDog[]) => {
@@ -70,12 +73,16 @@ const SearchPage = () => {
       {!!dogs?.length && !!dogIds?.length ? (
         <DogDataTable dogs={dogs} handleMatch={handleMatch} />
       ) : (
-        <div className={styles.noResults}>
-          <h2 className={styles.noResultsText}>
-            No pup was found using your search criteria above. Please clear your filters and try
-            again!
-          </h2>
-          <img className={styles.dogImage} src={dogDigging} alt="dog digging" />
+        <div>
+          {!fetchAllDogIds.isLoading && !isLoading && (
+            <div className={styles.noResults}>
+              <h2 className={styles.noResultsText}>
+                No pup was found using your search criteria above. Please clear your filters and try
+                again!
+              </h2>
+              <img className={styles.dogImage} src={dogDigging} alt="dog digging" />
+            </div>
+          )}
         </div>
       )}
       <MatchDialog
