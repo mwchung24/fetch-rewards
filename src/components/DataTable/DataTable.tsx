@@ -6,7 +6,7 @@ import {TDog} from '../../types';
 import FavoriteDogs from '../FavoriteDogs/FavoriteDogs';
 import styles from './DataTable.module.css';
 
-const DogDataTable = ({dogs}: {dogs: TDog[]}) => {
+const DogDataTable = ({dogs, handleMatch}: {dogs: TDog[]; handleMatch: (dogs: TDog[]) => void}) => {
   const [selectedDogs, setSelectedDogs] = useState<TDog[] | null>(null);
 
   const dogImageTemplate = (dog: TDog) => {
@@ -17,6 +17,12 @@ const DogDataTable = ({dogs}: {dogs: TDog[]}) => {
     setSelectedDogs(e.value);
   };
 
+  const handleMatchOnClick = () => {
+    if (selectedDogs) {
+      handleMatch(selectedDogs);
+    }
+  };
+
   return (
     <div className={styles.dataTableWrapper}>
       {selectedDogs && !!selectedDogs.length && <FavoriteDogs dogs={selectedDogs} />}
@@ -25,6 +31,7 @@ const DogDataTable = ({dogs}: {dogs: TDog[]}) => {
         label="Find a match!"
         type="button"
         className={styles.matchButton}
+        onClick={handleMatchOnClick}
       />
       <DataTable
         stripedRows

@@ -32,7 +32,7 @@ const Search = ({setSearch, breeds}: {setSearch: (args: TSearch) => void; breeds
   };
   return (
     <div className={styles.searchWrapper}>
-      <h1>Find your best friend!</h1>
+      <h1>Find your pawfect friend!</h1>
       <form className={styles.searchForm} onSubmit={handleSubmit(onSubmit)}>
         <MultiSelect
           className={styles.breedsInput}

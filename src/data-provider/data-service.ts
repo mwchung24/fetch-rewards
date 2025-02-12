@@ -52,15 +52,7 @@ export const getDogs = async (dogIds: string[]) => {
   return response.data;
 };
 
-export const getAllZipcodes = async (size: {size: string}) => {
-  const response = await axios.post(`${baseUrl}/locations/search`, size, {
-    withCredentials: true,
-    headers: {'Content-Type': 'application/json'},
-  });
-  return response.data;
-};
-
-export const findMatch = async (dogs: {dogs: TDog[]}) => {
+export const findMatch = async (dogs: TDog[]) => {
   const response = await axios.post(`${baseUrl}/dogs/match`, dogs, {
     withCredentials: true,
     headers: {'Content-Type': 'application/json'},

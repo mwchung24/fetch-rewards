@@ -6,11 +6,14 @@ import DogDataTable from '../../components/DataTable/DataTable';
 import Search from '../../components/Search/Search';
 import styles from './SearchPage.module.css';
 import dogDigging from '../../images/dogdigging.jpg';
+import MatchDialog from '../../components/MatchDialog/MatchDialog';
 
 const SearchPage = () => {
   const [dogIds, setDogIds] = useState<string[]>([]);
   const [dogs, setDogs] = useState<TDog[]>([]);
+  const [matchedDog, setMatchedDog] = useState<TDog | null>(null);
   const [search, setSearch] = useState<TSearch | null>(null);
+  const [showMatchDialog, setShowMatchDialog] = useState<boolean>(false);
 
   const queryClient = useQueryClient();
 
@@ -51,11 +54,21 @@ const SearchPage = () => {
     queryClient.invalidateQueries({queryKey: ['dogIds']});
   };
 
+  const handleMatch = (selectedDogs: TDog[]) => {
+    findDogMatch.mutate(selectedDogs, {
+      onSuccess: (res) => {
+        console.log('res', res);
+        setShowMatchDialog(true);
+        setMatchedDog(res.match);
+      },
+    });
+  };
+
   return (
     <div className={styles.searchPage}>
       <Search breeds={fetchBreeds?.data} setSearch={handleSearch} />
       {!!dogs?.length && !!dogIds?.length ? (
-        <DogDataTable dogs={dogs} />
+        <DogDataTable dogs={dogs} handleMatch={handleMatch} />
       ) : (
         <div className={styles.noResults}>
           <h2 className={styles.noResultsText}>
@@ -65,6 +78,11 @@ const SearchPage = () => {
           <img className={styles.dogImage} src={dogDigging} alt="dog digging" />
         </div>
       )}
+      <MatchDialog
+        isVisible={showMatchDialog}
+        setIsVisible={setShowMatchDialog}
+        matchedDog={matchedDog}
+      />
     </div>
   );
 };
