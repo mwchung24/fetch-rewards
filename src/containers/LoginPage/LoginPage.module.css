@@ -3,17 +3,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
+  background-image: url('../../images/dog.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .loginCard {
   margin-top: 100px;
   display: flex;
   justify-content: center;
-  width: 40%;
+  width: 50%;
   height: auto;
   align-items: center;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  max-width: 500px;
 }
 
 .form {
